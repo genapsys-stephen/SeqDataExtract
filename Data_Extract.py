@@ -20,28 +20,9 @@ n_sensors_act = data['n_sensors_act']
 # n_sensors_aligned = data['n_sensors_aligned'] # Column L
 
 # CLuster size up to 15 sensors
-Cluster=[]
-Cluster1=data['cluster_size']['1']
-Cluster2=data['cluster_size']['2']
-Cluster3=data['cluster_size']['3']
-Cluster4=data['cluster_size']['4']
-Cluster5=data['cluster_size']['5']
-Cluster6=data['cluster_size']['6']
-Cluster7=data['cluster_size']['7']
-Cluster8=data['cluster_size']['8']
-Cluster9=data['cluster_size']['9']
-Cluster10=data['cluster_size']['10']
-Cluster11=data['cluster_size']['11']
-Cluster12=data['cluster_size']['12']
-Cluster13=data['cluster_size']['13']
-Cluster14=data['cluster_size']['14']
-Cluster15=data['cluster_size']['15']
-
-Cluster = [Cluster1,Cluster2,Cluster3,Cluster4,Cluster5,Cluster6,Cluster7,Cluster8,Cluster9,Cluster10,Cluster11,Cluster12,Cluster13,Cluster14,Cluster15]
-
-Surface_Hit=0
-for x in range(15):
-    Surface_Hit=Surface_Hit+Cluster[x]
+cs = data['cluster_size']
+cluster_list = [cs[str(x)] for x in range(1,16)]
+surface_hit = sum(cluster_list)
 
 # ------------------- SNR data comes from SNR.csv -----------------------
 first_line = next(SNR_data)
@@ -104,7 +85,7 @@ data_for_spreadsheet = {
     "BP50>98.5 32HPs": bp50greater_than985_32hps,
     "BP75>98.5 32HPs": bp75greater_than985_32hps,
     "Polyclonal (PC)": total_pc_count,
-    "Surface Hit": Surface_Hit
+    "Surface Hit": surface_hit
 }
 with open('seq_stats.csv', mode='w') as file:
     csv_writer = csv.DictWriter(file, fieldnames=fieldnames)
