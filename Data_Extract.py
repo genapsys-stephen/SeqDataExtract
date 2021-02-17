@@ -19,6 +19,30 @@ bp75greater_than985_32hps = data['n_sensors_above_target_accuracy']['98.5']['75'
 n_sensors_act = data['n_sensors_act']
 # n_sensors_aligned = data['n_sensors_aligned'] # Column L
 
+# CLuster size up to 15 sensors
+Cluster=[]
+Cluster1=data['cluster_size']['1']
+Cluster2=data['cluster_size']['2']
+Cluster3=data['cluster_size']['3']
+Cluster4=data['cluster_size']['4']
+Cluster5=data['cluster_size']['5']
+Cluster6=data['cluster_size']['6']
+Cluster7=data['cluster_size']['7']
+Cluster8=data['cluster_size']['8']
+Cluster9=data['cluster_size']['9']
+Cluster10=data['cluster_size']['10']
+Cluster11=data['cluster_size']['11']
+Cluster12=data['cluster_size']['12']
+Cluster13=data['cluster_size']['13']
+Cluster14=data['cluster_size']['14']
+Cluster15=data['cluster_size']['15']
+
+Cluster = [Cluster1,Cluster2,Cluster3,Cluster4,Cluster5,Cluster6,Cluster7,Cluster8,Cluster9,Cluster10,Cluster11,Cluster12,Cluster13,Cluster14,Cluster15]
+
+Surface_Hit=0
+for x in range(15):
+    Surface_Hit=Surface_Hit+Cluster[x]
+
 # ------------------- SNR data comes from SNR.csv -----------------------
 first_line = next(SNR_data)
 
@@ -68,7 +92,7 @@ noise_list = [
 key = round(sum(key_list) / len(key_list), 1)
 noise = round((sum(noise_list) / len(noise_list)), 1)
 
-fieldnames = ['Acc80@75', 'Depth80@75','Key', 'Noise', 'Active','Aligned 32 HPs', 'BP50>98.5 32HPs', 'BP75>98.5 32HPs', 'Polyclonal (PC)']
+fieldnames = ['Acc80@75', 'Depth80@75','Key', 'Noise', 'Active','Aligned 32 HPs', 'BP50>98.5 32HPs', 'BP75>98.5 32HPs', 'Polyclonal (PC)','Surface Hit']
 
 data_for_spreadsheet = {
     "Acc80@75": 1 - cumsum_tot_error_pct_80at75 / 100,
@@ -79,7 +103,8 @@ data_for_spreadsheet = {
     "Aligned 32 HPs": aligned_count,
     "BP50>98.5 32HPs": bp50greater_than985_32hps,
     "BP75>98.5 32HPs": bp75greater_than985_32hps,
-    "Polyclonal (PC)": total_pc_count
+    "Polyclonal (PC)": total_pc_count,
+    "Surface Hit": Surface_Hit
 }
 with open('seq_stats.csv', mode='w') as file:
     csv_writer = csv.DictWriter(file, fieldnames=fieldnames)
