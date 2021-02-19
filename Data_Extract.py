@@ -92,4 +92,6 @@ with open('seq_stats.csv', mode='w') as file:
     csv_writer.writeheader()
     csv_writer.writerow(data_for_spreadsheet)
 
+print('Learning how to make pull request on Github')
+
 print(' ----------------- Successfully extracted relevant sequencing data to seq_stats.csv! -----------------')
