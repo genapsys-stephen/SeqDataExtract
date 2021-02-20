@@ -79,6 +79,14 @@ jump_warmup_list= [
     (float(snr_csv_list[13][jumps_raw_50])),
     (float(snr_csv_list[15][jumps_raw_50]))
     ]
+jump_warmup_o_list= [
+    (float(snr_csv_list[6][jumps_raw_50])),
+    (float(snr_csv_list[8][jumps_raw_50])),
+    (float(snr_csv_list[10][jumps_raw_50])),
+    (float(snr_csv_list[12][jumps_raw_50])),
+    (float(snr_csv_list[14][jumps_raw_50])),
+    (float(snr_csv_list[16][jumps_raw_50]))
+    ]
 jump_b_list= [
     (float(snr_csv_list[22][jumps_raw_50])),
     (float(snr_csv_list[34][jumps_raw_50])),
@@ -107,11 +115,39 @@ jump_b_list= [
     (float(snr_csv_list[594][jumps_raw_50])),
     (float(snr_csv_list[630][jumps_raw_50]))
 ]
+jump_b_o_list= [
+    (float(snr_csv_list[23][jumps_raw_50])),
+    (float(snr_csv_list[35][jumps_raw_50])),
+    (float(snr_csv_list[42][jumps_raw_50])),
+    (float(snr_csv_list[76][jumps_raw_50])),
+    (float(snr_csv_list[112][jumps_raw_50])),
+    (float(snr_csv_list[114][jumps_raw_50])),
+    (float(snr_csv_list[148][jumps_raw_50])),
+    (float(snr_csv_list[184][jumps_raw_50])),
+    (float(snr_csv_list[191][jumps_raw_50])),
+    (float(snr_csv_list[225][jumps_raw_50])),
+    (float(snr_csv_list[261][jumps_raw_50])),
+    (float(snr_csv_list[263][jumps_raw_50])),
+    (float(snr_csv_list[297][jumps_raw_50])),
+    (float(snr_csv_list[333][jumps_raw_50])),
+    (float(snr_csv_list[340][jumps_raw_50])),
+    (float(snr_csv_list[374][jumps_raw_50])),
+    (float(snr_csv_list[410][jumps_raw_50])),
+    (float(snr_csv_list[412][jumps_raw_50])),
+    (float(snr_csv_list[446][jumps_raw_50])),
+    (float(snr_csv_list[482][jumps_raw_50])),
+    (float(snr_csv_list[489][jumps_raw_50])),
+    (float(snr_csv_list[523][jumps_raw_50])),
+    (float(snr_csv_list[559][jumps_raw_50])),
+    (float(snr_csv_list[561][jumps_raw_50])),
+    (float(snr_csv_list[595][jumps_raw_50])),
+    (float(snr_csv_list[631][jumps_raw_50]))
+]
 
 key = round(sum(key_list) / len(key_list), 1)
 noise = round((sum(noise_list) / len(noise_list)), 1)
-jump_warmup = round((sum(jump_warmup_list) / len(jump_warmup_list)), 1)
-jump_b = round((sum(jump_b_list) / len(jump_b_list)), 1)
+jump_warmup = round((sum(jump_warmup_list) / len(jump_warmup_list)), 1) - round((sum(jump_warmup_o_list) / len(jump_warmup_o_list)), 1)
+jump_b = round((sum(jump_b_list) / len(jump_b_list)), 1) - round((sum(jump_b_o_list) / len(jump_b_o_list)), 1)
 
 
 fieldnames = ['Acc80@75', 'Depth80@75','Key', 'Noise', 'Active','Aligned 32 HPs', 'BP50>98.5 32HPs', 'BP75>98.5 32HPs', 'Polyclonal (PC)','Surface Hit','Jump Warm Up','Jump B Flows']
